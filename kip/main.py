@@ -6,6 +6,21 @@ def main(page: ft.Page):
     page.window.width = 700
     page.window.height = 500
     
+    list_expenses = []
+    
+    def on_click_add(e):
+        pass
+    
+    def on_click_summary(e):
+        def close_dialog(e):
+            dialog.open = False
+            page.update
+        
+        dialog = ft.AlertDialog(
+            model=True,
+            title=ft.Text("Summary")
+        )
+    
     header_title = ft.Row([
         ft.Container(
             content=ft.Text("Expense Tracker",
@@ -43,6 +58,9 @@ def main(page: ft.Page):
     
     button_add = ft.ElevatedButton(text="Add")
     button_summary = ft.ElevatedButton(text="View Summary")
+    
+    button_add.on_click = on_click_add
+    button_summary.on_click = on_click_summary
     
     group_button = ft.Container(
         padding=ft.Padding(10 , 20 ,10 , 10),
